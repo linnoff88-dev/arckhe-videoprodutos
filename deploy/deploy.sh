@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Deploy/atualização do videoprodutos numa VPS (Ubuntu, sem GPU). Idempotente.
+# Deploy/atualizaçêo do videoprodutos numa VPS (Ubuntu, sem GPU). Idempotente.
 # Uso na VPS:  bash deploy/deploy.sh      (faz pull, instala deps, fontes, venv+rembg+edge-tts, serviço systemd)
 set -euo pipefail
 DIR="$(cd "$(dirname "$0")/.." && pwd)"

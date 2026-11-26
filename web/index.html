@@ -64,31 +64,31 @@ kbd{background:var(--bg2);border:1px solid var(--line);padding:1px 6px;border-ra
     </div>
     <div class="card">
       <h2>Lote (várias tarefas)</h2>
-      <p class="hint">Uma fonte por linha. Campos opcionais separados por <kbd>|</kbd>: preset, estilo, formato (<code>16:9</code>, <code>9:16</code>, <code>ambos</code>), <code>max=N</code>, <code>marca=Nome</code>, <code>sem-video</code>. Linhas com <kbd>#</kbd> são ignoradas.</p>
+      <p class="hint">Uma fonte por linha. Campos opcionais separados por <kbd>|</kbd>: preset, estilo, formato (<code>16:9</code>, <code>9:16</code>, <code>ambos</code>), <code>max=N</code>, <code>marca=Nome</code>, <code>sem-video</code>. Linhas com <kbd>#</kbd> sêo ignoradas.</p>
       <textarea id="batch" placeholder="/home/eu/produtos/cafes | quente-vintage | natural
 https://minhaloja.com.br | auto | promo | 9:16 | max=5
 /home/eu/produtos/fones | dark-premium | tech | ambos | marca=SOUNDX"></textarea>
       <div style="margin-top:12px" class="row"><button class="b" id="addBatch">➕ Enfileirar lote</button></div>
       <h3 style="margin-top:22px">Serviços</h3>
       <div class="stat" id="health"><span class="pill">verificando…</span></div>
-      <p class="hint">Tudo roda local e sem custo. LLM e imagem por IA são opcionais — veja Configurações.</p>
+      <p class="hint">Tudo roda local e sem custo. LLM e imagem por IA sêo opcionais — veja Configurações.</p>
     </div>
   </div>
 </section>
 
-<section id="s-fila"><div class="card"><div class="row"><h2 style="margin:0">Fila de produção</h2><span class="fix"><button class="b sec sm" id="clear">Limpar concluídos</button></span></div><div id="jobs"></div></div></section>
+<section id="s-fila"><div class="card"><div class="row"><h2 style="margin:0">Fila de produçêo</h2><span class="fix"><button class="b sec sm" id="clear">Limpar concluídos</button></span></div><div id="jobs"></div></div></section>
 
 <section id="s-projetos"><div class="row" style="margin-bottom:12px"><h2 style="margin:0">Projetos gerados</h2><span class="hint fix" id="outdir"></span></div><div class="grid g3" id="projects"></div></section>
 
-<section id="s-config"><div class="card"><h2>Configurações</h2><p class="hint">Salvas em <code>.env</code> na pasta do projeto (chaves ficam só no seu disco). Defaults = tudo local e grátis. Deixe em branco para voltar ao padrão.</p><form id="cfgForm"></form><div class="row" style="margin-top:14px"><button class="b" id="saveCfg">💾 Salvar</button></div></div></section>
+<section id="s-config"><div class="card"><h2>Configurações</h2><p class="hint">Salvas em <code>.env</code> na pasta do projeto (chaves ficam só no seu disco). Defaults = tudo local e grátis. Deixe em branco para voltar ao padrêo.</p><form id="cfgForm"></form><div class="row" style="margin-top:14px"><button class="b" id="saveCfg">💾 Salvar</button></div></div></section>
 
 <section id="s-ajuda"><div class="card">
 <h2>Como funciona</h2>
 <ol>
-<li><b>Busca</b> os produtos na pasta ou na URL (baixa fotos, nome, descrição e preço quando existem).</li>
+<li><b>Busca</b> os produtos na pasta ou na URL (baixa fotos, nome, descriçêo e preço quando existem).</li>
 <li><b>Classifica</b> o produto (tecnologia, moda, alimento, casa…) e escreve o copy (título, 3 benefícios, CTA) — com LLM local (Ollama) ou por template.</li>
 <li><b>Imagens</b>: recorta o fundo (rembg local) e recompõe no preset escolhido — ou automático pela categoria — em 1:1, 16:9 e 9:16, versões limpa e com texto/preço.</li>
-<li><b>Vídeo</b>: intro → benefícios → oferta/CTA, com zoom, transições, grade de cor por estilo, música CC0 (Freesound via inemavox) e narração opcional. Sai 16:9 e 9:16 + um catálogo com todos os produtos.</li>
+<li><b>Vídeo</b>: intro → benefícios → oferta/CTA, com zoom, transições, grade de cor por estilo, música CC0 (Freesound via inemavox) e narraçêo opcional. Sai 16:9 e 9:16 + um catálogo com todos os produtos.</li>
 <li>Tudo é salvo em <code>&lt;saída&gt;/&lt;projeto&gt;/</code> com <code>projeto.json</code>.</li>
 </ol>
 <h3>Formato da pasta</h3>
@@ -98,7 +98,7 @@ https://minhaloja.com.br | auto | promo | 9:16 | max=5
     produto.json      ← {"name":"Fone X1","price":"R$ 199","desc":"...","category":"tecnologia"}
   caneca-azul/
     foto.png
-    produto.md        ← 1ª linha = nome, resto = descrição
+    produto.md        ← 1ª linha = nome, resto = descriçêo
   camiseta.jpg        ← fotos soltas: um produto cada</pre>
 <h3>CLI</h3>
 <pre>node cli.js ~/produtos --preset dark-premium --estilo tech
@@ -152,19 +152,19 @@ async function act(id,a){if(a==='delete'){await fetch('/api/queue/'+id,{method:'
 
 async function loadProjects(){const ps=await api('/api/projects');$('#projects').innerHTML=ps.length?ps.map(p=>`<div class="card proj" onclick="openProject('${p.id}')"><img src="${p.thumb||''}" alt=""><div class="p"><b>${p.name}</b><div class="hint">${p.products} produto(s) · ${new Date(p.createdAt).toLocaleString('pt-BR')}</div></div></div>`).join(''):'<p class="hint">Nenhum projeto ainda.</p>';}
 let cur=null;
-async function openProject(id){const m=await api('/api/projects/'+id);if(m.error)return toast('Projeto ainda não salvo');cur=id;$('#mTitle').textContent=m.name;
+async function openProject(id){const m=await api('/api/projects/'+id);if(m.error)return toast('Projeto ainda nêo salvo');cur=id;$('#mTitle').textContent=m.name;
   const fmtName={square:'1:1',wide:'16:9',tall:'9:16'};
   $('#mBody').innerHTML=`<div class="hint">${m.source} · ${m.dir}</div>`+(m.compilation&&Object.keys(m.compilation).length?`<h3 style="margin-top:14px">Catálogo (todos os produtos)</h3><div class="grid g2">${Object.entries(m.compilation).map(([f,u])=>`<div><video controls preload="metadata" src="${u}"></video><div class="hint">${fmtName[f]} · <a href="${u}" download>baixar</a></div></div>`).join('')}</div>`:'')+
   m.products.map(p=>`<div style="margin-top:22px;border-top:1px solid var(--line);padding-top:14px"><h3>${p.name} <span class="pill">${p.category}</span> <span class="pill">${p.preset}</span> <span class="pill">${p.style}</span>${p.price?` <span class="pill ok">${p.price}</span>`:''}</h3>
     <div class="hint">“${p.copy.headline}” — ${p.copy.tagline} · ${p.copy.benefits.join(' · ')} · CTA: ${p.copy.cta}${p.copy.llm?' · ✨ LLM':' · template'}</div>
-    ${p.video?`<div class="grid g2" style="margin-top:10px">${Object.entries(p.video.formats).map(([f,v])=>`<div><video controls preload="metadata" poster="${v.poster}" src="${v.file}"></video><div class="hint">${fmtName[f]} · ${v.seconds}s · <a href="${v.file}" download>baixar</a></div></div>`).join('')}</div><div class="hint">música: ${p.video.music?.name||'—'}${p.video.music?.author?' ('+p.video.music.author+', CC0)':''} · narração: ${p.video.voice?'sim':'não'} · motor: ${p.video.engine||'ffmpeg'} · encoder: ${p.video.encoder}</div>`:''}
+    ${p.video?`<div class="grid g2" style="margin-top:10px">${Object.entries(p.video.formats).map(([f,v])=>`<div><video controls preload="metadata" poster="${v.poster}" src="${v.file}"></video><div class="hint">${fmtName[f]} · ${v.seconds}s · <a href="${v.file}" download>baixar</a></div></div>`).join('')}</div><div class="hint">música: ${p.video.music?.name||'—'}${p.video.music?.author?' ('+p.video.music.author+', CC0)':''} · narraçêo: ${p.video.voice?'sim':'nêo'} · motor: ${p.video.engine||'ffmpeg'} · encoder: ${p.video.encoder}</div>`:''}
     ${Object.entries(p.images).map(([pr,im])=>`<div style="margin-top:10px"><b class="hint">Imagens — ${META.presets[pr]?.label||pr}</b><div class="thumbs" style="margin-top:6px">${['square','wide','tall'].map(f=>`<figure><a href="${im.post[f]}" target="_blank"><img src="${im.post[f]}"></a><figcaption>${fmtName[f]} com texto</figcaption></figure><figure><a href="${im.clean[f]}" target="_blank"><img src="${im.clean[f]}"></a><figcaption>${fmtName[f]} limpa</figcaption></figure>`).join('')}</div></div>`).join('')}
     <div style="margin-top:8px"><b class="hint">Originais</b><div class="thumbs" style="margin-top:6px">${p.originals.map(o=>`<figure><img src="${o}"></figure>`).join('')}</div></div></div>`).join('');
   $('#modal').classList.add('on');}
 $('#mClose').onclick=()=>$('#modal').classList.remove('on');
 $('#mDel').onclick=async()=>{if(!confirm('Apagar este projeto do disco?'))return;await fetch('/api/projects/'+cur,{method:'DELETE'});$('#modal').classList.remove('on');loadProjects();loadQueue();};
 
-async function loadConfig(){const {schema,values}=await api('/api/config');const groups={geral:'Geral',llm:'LLM (copy e classificação) — opcional',img:'Imagem por IA (cenários) — opcional',video:'Vídeo por IA (clipes de câmera) — opcional',audio:'Áudio',render:'Render'};
+async function loadConfig(){const {schema,values}=await api('/api/config');const groups={geral:'Geral',llm:'LLM (copy e classificaçêo) — opcional',img:'Imagem por IA (cenários) — opcional',video:'Vídeo por IA (clipes de câmera) — opcional',audio:'Áudio',render:'Render'};
   $('#cfgForm').innerHTML=Object.entries(groups).map(([g,t])=>`<h3 style="margin-top:18px">${t}</h3><div class="grid g2">${schema.filter(s=>s.group===g).map(s=>`<div><label>${s.label}</label>${s.type==='select'?`<select name="${s.key}">${s.options.map(o=>`<option ${values[s.key]===o?'selected':''}>${o}</option>`).join('')}</select>`:`<input name="${s.key}" type="${s.type==='password'?'password':'text'}" value="${(values[s.key]||'').replace(/"/g,'&quot;')}" placeholder="${(s.def||'').replace(/"/g,'&quot;')}">`}${s.help?`<div class="hint">${s.help}</div>`:''}</div>`).join('')}</div>`).join('');}
 $('#saveCfg').onclick=async()=>{const body={};new FormData($('#cfgForm')).forEach((v,k)=>body[k]=v);await api('/api/config',{method:'POST',body});toast('Configurações salvas');health();};
 init();

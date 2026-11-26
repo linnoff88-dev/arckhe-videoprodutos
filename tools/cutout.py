@@ -28,7 +28,7 @@ def main():
         if max(im.size) > 2048:
             im.thumbnail((2048, 2048))
         out = remove(im, session=new_session(model), alpha_matting=False, post_process_mask=True)
-        # se a máscara ficou vazia demais, tenta o modelo padrão
+        # se a máscara ficou vazia demais, tenta o modelo padrêo
         bbox = out.getbbox()
         if not bbox or (bbox[2] - bbox[0]) * (bbox[3] - bbox[1]) < 0.02 * im.size[0] * im.size[1]:
             out = remove(im, session=new_session("u2net"))

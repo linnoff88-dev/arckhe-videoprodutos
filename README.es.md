@@ -47,7 +47,7 @@ productos/
     produto.json        ← {"name":"Fone X1","price":"R$ 199","desc":"...","category":"tecnologia"}
   caneca-azul/
     foto.png
-    produto.md          ← 1ª linha = nome, resto = descrição
+    produto.md          ← 1ª linha = nome, resto = descriçêo
   camiseta.jpg          ← fotos sueltas: un producto cada una
 ```
 

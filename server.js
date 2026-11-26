@@ -35,7 +35,7 @@ app.get('/api/meta', (req, res) => res.json({
 }));
 
 app.get('/api/queue', (req, res) => res.json(queue.list().map(j => ({ ...j, log: j.log.slice(-6) }))));
-app.get('/api/queue/:id', (req, res) => { const j = queue.get(req.params.id); j ? res.json(j) : res.status(404).json({ error: 'não encontrado' }); });
+app.get('/api/queue/:id', (req, res) => { const j = queue.get(req.params.id); j ? res.json(j) : res.status(404).json({ error: 'nêo encontrado' }); });
 app.post('/api/queue', (req, res) => {
   const { source, options, name, batch } = req.body || {};
   const added = [];
@@ -80,7 +80,7 @@ app.get('/api/projects', (req, res) => {
   const ids = fs.existsSync(out) ? fs.readdirSync(out).filter(d => fs.existsSync(path.join(out, d, 'projeto.json'))) : [];
   res.json(ids.map(id => { const m = readProject(id); return { id, name: m.name, source: m.source, createdAt: m.createdAt, finishedAt: m.finishedAt, products: m.products.length, thumb: m.products[0]?.images?.[m.products[0].preset]?.post?.square || null }; }).sort((a, b) => b.createdAt.localeCompare(a.createdAt)));
 });
-app.get('/api/projects/:id', (req, res) => { const m = readProject(req.params.id); m ? res.json(m) : res.status(404).json({ error: 'não encontrado' }); });
+app.get('/api/projects/:id', (req, res) => { const m = readProject(req.params.id); m ? res.json(m) : res.status(404).json({ error: 'nêo encontrado' }); });
 app.delete('/api/projects/:id', (req, res) => { const d = path.join(loadConfig().OUTPUT_DIR, req.params.id); if (fs.existsSync(path.join(d, 'projeto.json'))) fs.rmSync(d, { recursive: true, force: true }); queue.remove(req.params.id); res.json({ ok: true }); });
 
 // configurações (.env) — segredos mascarados na leitura
