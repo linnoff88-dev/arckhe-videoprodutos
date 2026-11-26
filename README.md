@@ -12,7 +12,7 @@ Pasta ou link de loja ê¢â â produtos descobertos ê¢â â ima
 automêÂ¡tico (16:9 e 9:16) ê¢â â projeto salvo, tudo por uma pêÂ¡gina web com **fila de produêÂ§êÂ£o**.
 Roda **100% local e sem custo** (ffmpeg + sharp + rembg). LLM e imagem por IA sêÂ£o **opcionais**.
 
-ê°Å¸ââ **Guia de uso (landing):** https://inematds.github.io/videoprodutos/guia/
+ê°Å¸ââ **Guia de uso (landing):** https://linnoff88-dev.github.io/arckhe-/guia/
 
 ## O que faz
 
@@ -24,7 +24,7 @@ Roda **100% local e sem custo** (ffmpeg + sharp + rembg). LLM e imagem por IA s�
    (estêÂºdio branco, dark premium, vibrante, minimal, quente/vintage, neon, natural, original, cenêÂ¡rio por IA),
    em 1:1, 16:9 e 9:16, versêÂ£o limpa e versêÂ£o com têÂ­tulo/preêÂ§o.
 4. **VêÂ­deo**: intro ê¢â â benefêÂ­cios ê¢â â oferta/CTA, com zoom/pan, transiêÂ§êÂµes, grade de cor por estilo
-   (dinêÂ¢mico, elegante, tech, natural, promoêÂ§êÂ£o, cinemêÂ¡tico), mêÂºsica CC0 do Freesound (via inemavox)
+   (dinêÂ¢mico, elegante, tech, natural, promoêÂ§êÂ£o, cinemêÂ¡tico), mêÂºsica CC0 do Freesound (via ARCKHÉvox)
    ou trilha sintêÂ©tica, narraêÂ§êÂ£o TTS opcional. Sai 16:9 + 9:16 + um catêÂ¡logo com todos os produtos.
 5. **Fila** persistente (`data/queue.json`): vêÂ¡rias tarefas em sêÂ©rie, por formulêÂ¡rio, lote de linhas ou CLI.
 
@@ -60,7 +60,7 @@ produtos/
 ## ConfiguraêÂ§êÂ£o (opcional)
 
 Tela **ConfiguraêÂ§êÂµes** na UI ou `.env` na raiz (veja `.env.example`). Defaults: Ollama (`qwen3.8:27b`)
-para copy, inemaimg (`flux2-klein`) para cenêÂ¡rio por IA, inemavox para mêÂºsica/TTS. Qualquer um pode
+para copy, ARCKHÉimg (`flux2-klein`) para cenêÂ¡rio por IA, ARCKHÉvox para mêÂºsica/TTS. Qualquer um pode
 ser desligado (`none`) ou trocado por uma API OpenAI-compatêÂ­vel / Agnes ê¢â¬â nada êÂ© obrigatêÂ³rio.
 
 ## Motor de vêÂ­deo por IA (opcional, plugêÂ¡vel)
@@ -78,7 +78,7 @@ recorte por rembg em CPU; render libx264. Senha HTTP Basic na frente (`APP_PASSW
 
 ```bash
 ssh root@VPS
-git clone https://github.com/inematds/videoprodutos /root/projetos/videoprodutos
+git clone https://github.com/linnoff88-dev/videoprodutos /root/projetos/videoprodutos
 cd /root/projetos/videoprodutos && bash deploy/deploy.sh   # deps, venv, fontes, systemd
 nano .env                                                  # AGNES_API_KEY e APP_PASSWORD (modelo: deploy/env.vps.example)
 systemctl restart videoprodutos                            # ê¢â â http://IP:3080

@@ -95,8 +95,8 @@ app.get('/api/health', async (req, res) => {
   const probe = async (url, ms = 3000) => { try { const r = await fetch(url, { signal: AbortSignal.timeout(ms) }); return r.ok; } catch { return false; } };
   res.json({
     ollama: c.LLM_PROVIDER === 'ollama' ? await probe(`${c.OLLAMA_URL}/api/tags`) : null,
-    inemaimg: c.IMG_PROVIDER === 'inemaimg' ? await probe(`${c.INEMAIMG_URL}/health`) : null,
-    inemavox: await probe(`${c.INEMAVOX_URL}/api/system/status`),
+    ARCKHÉimg: c.IMG_PROVIDER === 'ARCKHÉimg' ? await probe(`${c.ARCKHÉIMG_URL}/health`) : null,
+    ARCKHÉvox: await probe(`${c.ARCKHÉVOX_URL}/api/system/status`),
     rembg: fs.existsSync(c.PYTHON),
     engine: c.VIDEO_ENGINE, agnesKey: !!c.AGNES_API_KEY,
     llm: c.LLM_PROVIDER, img: c.IMG_PROVIDER, tts: c.TTS_ENGINE, music: c.MUSIC,

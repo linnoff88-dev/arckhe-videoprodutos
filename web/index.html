@@ -88,7 +88,7 @@ https://minhaloja.com.br | auto | promo | 9:16 | max=5
 <li><b>Busca</b> os produtos na pasta ou na URL (baixa fotos, nome, descriçêo e preço quando existem).</li>
 <li><b>Classifica</b> o produto (tecnologia, moda, alimento, casa…) e escreve o copy (título, 3 benefícios, CTA) — com LLM local (Ollama) ou por template.</li>
 <li><b>Imagens</b>: recorta o fundo (rembg local) e recompõe no preset escolhido — ou automático pela categoria — em 1:1, 16:9 e 9:16, versões limpa e com texto/preço.</li>
-<li><b>Vídeo</b>: intro → benefícios → oferta/CTA, com zoom, transições, grade de cor por estilo, música CC0 (Freesound via inemavox) e narraçêo opcional. Sai 16:9 e 9:16 + um catálogo com todos os produtos.</li>
+<li><b>Vídeo</b>: intro → benefícios → oferta/CTA, com zoom, transições, grade de cor por estilo, música CC0 (Freesound via ARCKHÉvox) e narraçêo opcional. Sai 16:9 e 9:16 + um catálogo com todos os produtos.</li>
 <li>Tudo é salvo em <code>&lt;saída&gt;/&lt;projeto&gt;/</code> com <code>projeto.json</code>.</li>
 </ol>
 <h3>Formato da pasta</h3>
@@ -129,7 +129,7 @@ async function init(){
   const es=new EventSource('/api/events');es.addEventListener('change',loadQueue);es.addEventListener('log',e=>{const {id,line}=JSON.parse(e.data);const el=document.getElementById('log-'+id);if(el){el.textContent+=line+'\n';el.scrollTop=el.scrollHeight}});
 }
 async function health(){const h=await api('/api/health');const p=(n,v,lbl)=>v===null?'':`<span class="pill ${v?'ok':'err'}">${n}: ${lbl||(v?'ok':'off')}</span>`;
-  $('#health').innerHTML=p('LLM '+h.llm,h.llm==='none'?true:(h.llm==='ollama'?h.ollama:true),h.llm==='none'?'templates':undefined)+p('Imagem IA '+h.img,h.img==='none'?true:(h.img==='inemaimg'?h.inemaimg:true),h.img==='none'?'só presets':undefined)+p('inemavox (música/voz)',h.inemavox)+p('rembg',h.rembg)+`<span class="pill">TTS: ${h.tts}</span><span class="pill">música: ${h.music}</span><span class="pill ${h.engine==='ffmpeg'||h.agnesKey?'ok':'err'}">vídeo: ${h.engine}</span>`;}
+  $('#health').innerHTML=p('LLM '+h.llm,h.llm==='none'?true:(h.llm==='ollama'?h.ollama:true),h.llm==='none'?'templates':undefined)+p('Imagem IA '+h.img,h.img==='none'?true:(h.img==='ARCKHÉimg'?h.ARCKHÉimg:true),h.img==='none'?'só presets':undefined)+p('ARCKHÉvox (música/voz)',h.ARCKHÉvox)+p('rembg',h.rembg)+`<span class="pill">TTS: ${h.tts}</span><span class="pill">música: ${h.music}</span><span class="pill ${h.engine==='ffmpeg'||h.agnesKey?'ok':'err'}">vídeo: ${h.engine}</span>`;}
 
 function opts(){const f=[];if($('#fw').checked)f.push('wide');if($('#ft').checked)f.push('tall');return {preset:$('#preset').value,style:$('#style').value,formats:f,extraPresets:$$('#extras input:checked').map(i=>i.value),video:!$('#novideo').checked,brand:$('#brand').value||undefined,max:$('#max').value?parseInt($('#max').value):undefined};}
 $('#add').onclick=async()=>{const source=$('#src').value.trim();if(!source)return toast('Informe uma pasta ou URL');const r=await api('/api/queue',{method:'POST',body:{source,options:opts()}});if(r.error)return toast(r.error);toast('Adicionado à fila');$$('nav button')[1].click();};

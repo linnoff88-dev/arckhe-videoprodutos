@@ -5,7 +5,7 @@
 Store folder or link → discovered products → images in style presets → automatic promotional video (16:9 and 9:16) → saved project, all through a web page with a **production queue**.
 Runs **100% locally and at no cost** (ffmpeg + sharp + rembg). LLM and AI image generation are **optional**.
 
-📖 **User guide (landing page):** https://inematds.github.io/videoprodutos/guia/en/
+📖 **User guide (landing page):** https://linnoff88-dev.github.io/arckhe-/guia/en/
 
 ## What it does
 
@@ -17,7 +17,7 @@ Runs **100% locally and at no cost** (ffmpeg + sharp + rembg). LLM and AI image 
    (white studio, premium dark, vibrant, minimal, warm/vintage, neon, natural, original, AI-generated setting),
    in 1:1, 16:9, and 9:16, with a clean version and a version with title/price.
 4. **Video**: intro → benefits → offer/CTA, with zoom/pan, transitions, color grading by style
-   (dynamic, elegant, tech, natural, promotion, cinematic), CC0 music from Freesound (via inemavox)
+   (dynamic, elegant, tech, natural, promotion, cARCKHÉtic), CC0 music from Freesound (via ARCKHÉvox)
    or a synthetic soundtrack, optional TTS narration. Outputs 16:9 + 9:16 + a catalog with all products.
 5. **Queue** persists (`data/queue.json`): multiple tasks in a series, submitted through a form, a batch of lines, or the CLI.
 
@@ -53,7 +53,7 @@ produtos/
 ## Configuration (optional)
 
 **Settings** screen in the UI or `.env` in the root (see `.env.example`). Defaults: Ollama (`qwen3.8:27b`)
-for copy, inemaimg (`flux2-klein`) for AI-generated settings, inemavox for music/TTS. Any can
+for copy, ARCKHÉimg (`flux2-klein`) for AI-generated settings, ARCKHÉvox for music/TTS. Any can
 be disabled (`none`) or switched to an OpenAI-compatible API / Agnes — nothing is required.
 
 ## AI video engine (optional, pluggable)
@@ -71,7 +71,7 @@ CPU background removal with rembg; libx264 rendering. HTTP Basic password protec
 
 ```bash
 ssh root@VPS
-git clone https://github.com/inematds/videoprodutos /root/projetos/videoprodutos
+git clone https://github.com/linnoff88-dev/videoprodutos /root/projetos/videoprodutos
 cd /root/projetos/videoprodutos && bash deploy/deploy.sh   # deps, venv, fonts, systemd
 nano .env                                                  # AGNES_API_KEY and APP_PASSWORD (model: deploy/env.vps.example)
 systemctl restart videoprodutos                            # → http://IP:3080
